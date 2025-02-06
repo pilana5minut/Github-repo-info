@@ -251,7 +251,7 @@ body {
 }
 .autocomplete-list__item:hover {
   background-color: #f2f3f4;
-  background-image: url("/assets/icons/plus.svg");
+  background-image: url("../../assets/icons/plus.svg");
   background-repeat: no-repeat;
   background-position: top 5px right 12px;
   background-size: 22px;
@@ -274,7 +274,7 @@ body {
   word-break: break-all;
 }
 .repos-list__item:hover .repos-list__button {
-  background-image: url("/assets/icons/close.svg");
+  background-image: url("../../assets/icons/close.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -296,13 +296,13 @@ body {
   background-position: left 0 top 0;
 }
 .block-info-list__item--name {
-  background-image: url("/assets/icons/book.svg");
+  background-image: url("../../assets/icons/book.svg");
 }
 .block-info-list__item--owner {
-  background-image: url("/assets/icons/user.svg");
+  background-image: url("../../assets/icons/user.svg");
 }
 .block-info-list__item--stars {
-  background-image: url("/assets/icons/star.svg");
+  background-image: url("../../assets/icons/star.svg");
 }
 .block-info-list__link {
   font-weight: normal;
