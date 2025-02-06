@@ -1,0 +1,14 @@
+.app {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+}

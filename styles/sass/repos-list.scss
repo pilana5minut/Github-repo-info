@@ -1,0 +1,48 @@
+.repos-list {
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  &__item {
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid var(--global-border-color);
+    border-radius: 6px;
+    word-break: break-all;
+  }
+
+  &__item:hover &__button {
+    background-image: url('../../assets/icons/close.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button {
+    flex-basis: 28px;
+    height: 28px;
+    margin-left: 8px;
+    align-self: center;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.block-info-list {
+  &__item {
+    font-weight: 700;
+  }
+
+  &__link {
+    font-weight: normal;
+    color: #858a8f;
+  }
+
+  &__score {
+    font-weight: normal;
+  }
+}

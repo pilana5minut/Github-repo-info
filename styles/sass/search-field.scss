@@ -1,0 +1,11 @@
+.search-field {
+  width: 100%;
+  height: 32px;
+  padding: 12px;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+
+  &::placeholder {
+    color: #cad0d5;
+  }
+}

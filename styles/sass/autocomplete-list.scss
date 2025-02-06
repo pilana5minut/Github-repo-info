@@ -1,0 +1,29 @@
+.autocomplete-list {
+  min-height: 96px;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
+
+  box-shadow: 0px 7px 7px #aaaeb3;
+
+  &__item {
+    height: 32px;
+    padding: 6px 14px;
+    padding-right: 40px;
+    line-height: 1;
+    cursor: pointer;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      background-color: #f2f3f4;
+      background-image: url('../../assets/icons/plus.svg');
+      background-repeat: no-repeat;
+      background-position: top 5px right 12px;
+      background-size: 22px;
+    }
+  }
+}

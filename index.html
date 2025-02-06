@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>github-repo-info</title>
+  <link rel="stylesheet" href="styles/css/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <main class="app">
+
+      <input class="search-field" id="search-field" autocomplete="off" type="text"
+        placeholder="Введите название репозитория...">
+
+      <ul class="autocomplete-list" id="autocomplete-list">
+        <li class="autocomplete-list__item">autocomplete item 1 autocomplete item 1 autocomplete
+          item 1</li>
+        <li class="autocomplete-list__item">autocomplete item 2</li>
+        <li class="autocomplete-list__item">autocomplete item 3</li>
+        <li class="autocomplete-list__item">autocomplete item 4</li>
+        <li class="autocomplete-list__item">autocomplete item 5</li>
+      </ul>
+
+      <ul class="repos-list" id="repos-list">
+        <!-- //////////////////////////////////// -->
+        <li class="repos-list__item">
+          <ul class="repos-list__info block-info-list">
+            <li class="block-info-list__item">Name:
+              <a class="block-info-list__link" href="#" target="_blank"
+                rel="noopener noreferrer">name</a>
+            </li>
+            <li class="block-info-list__item">Owner:
+              <a class="block-info-list__link" href="#" target="_blank"
+                rel="noopener noreferrer">owner</a>
+            </li>
+            <li class="block-info-list__item">Stars:
+              <span class="block-info-list__score">7654</span>
+            </li>
+          </ul>
+          <button class="repos-list__button" type="button"></button>
+        </li>
+      </ul>
+
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
