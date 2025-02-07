@@ -12,20 +12,32 @@
   <div class="container">
     <main class="app">
 
+      <!-- <input id="query-button" type="button" value="caramba-repo"> -->
+      <input id="query-button" type="button" value="react">
+
       <input class="search-field" id="search-field" autocomplete="off" type="text"
         placeholder="Введите название репозитория...">
 
       <ul class="autocomplete-list" id="autocomplete-list">
-        <li class="autocomplete-list__item">autocomplete item 1 autocomplete item 1 autocomplete
-          item 1</li>
-        <li class="autocomplete-list__item">autocomplete item 2</li>
-        <li class="autocomplete-list__item">autocomplete item 3</li>
-        <li class="autocomplete-list__item">autocomplete item 4</li>
-        <li class="autocomplete-list__item">autocomplete item 5</li>
+        <!-- <li class="autocomplete-list__item">
+          <span class="autocomplete-list__repo-name">repo-name</span>
+          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+          <span class="autocomplete-list__repo-stars">repo-stars</span>
+        </li>
+        <li class="autocomplete-list__item">
+          <span class="autocomplete-list__repo-name">repo-name</span>
+          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+          <span class="autocomplete-list__repo-stars">repo-stars</span>
+        </li>
+        <li class="autocomplete-list__item">
+          <span class="autocomplete-list__repo-name">repo-name</span>
+          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+          <span class="autocomplete-list__repo-stars">repo-stars</span>
+        </li> -->
       </ul>
 
       <ul class="repos-list" id="repos-list">
-        <li class="repos-list__item">
+        <!-- <li class="repos-list__item">
           <ul class="repos-list__info block-info-list">
             <li class="block-info-list__item block-info-list__item--name" title="Repository name.">
               <a class="block-info-list__link" href="#" target="_blank"
@@ -41,8 +53,9 @@
               <span class="block-info-list__score">7654</span>
             </li>
           </ul>
-          <button class="repos-list__button" type="button" title="Remove from the list"></button>
-        </li>
+          <button class="repos-list__button" id="card-close-button" type="button"
+            title="Remove from the list"></button>
+        </li> -->
       </ul>
 
     </main>

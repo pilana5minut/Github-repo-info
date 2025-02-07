@@ -1,0 +1,54 @@
+const BASE_URL = 'https://api.github.com'
+const queryButton = document.getElementById('query-button')
+const autocompleteList = document.getElementById('autocomplete-list')
+const reposList = document.getElementById('repos-list')
+
+queryButton.addEventListener('click', (evt) => {
+  repositoryQuery(evt.currentTarget.value)
+})
+
+async function repositoryQuery(repoName) {
+  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}`)
+  const data = await response.json()
+  console.log(data.items)
+  showAutocompleteList(data.items)
+}
+
+function showAutocompleteList(repositoryList) {
+  repositoryList.forEach(repo => {
+    const listItem = document.createElement('li')
+    listItem.classList.add('autocomplete-list__item')
+    listItem.innerHTML = `
+      <span class="autocomplete-list__repo-name">${repo.name}</span>
+      <span class="autocomplete-list__repo-owner">-> ${repo.owner.login} -></span>
+      <span class="autocomplete-list__repo-stars">${repo.stargazers_count}</span>
+    `
+    listItem.addEventListener('click', () => { addToRepositoriesList(repo) })
+    autocompleteList.append(listItem)
+  })
+}
+
+function addToRepositoriesList(repo) {
+  const listItem = document.createElement('li')
+  listItem.classList.add('repos-list__item')
+  listItem.innerHTML = `
+        <ul class="repos-list__info block-info-list">
+      <li class="block-info-list__item block-info-list__item--name" title="Repository name.">
+        <a class="block-info-list__link" href="${repo.html_url}" target="_blank"
+          rel="noopener noreferrer">${repo.name}</a>
+      </li>
+      <li class="block-info-list__item block-info-list__item--owner"
+        title="Repository owner.">
+        <a class="block-info-list__link" href="${repo.owner.html_url}" target="_blank"
+          rel="noopener noreferrer">${repo.owner.login}</a>
+      </li>
+      <li class="block-info-list__item block-info-list__item--stars"
+        title="Number of repository stars.">
+        <span class="block-info-list__score">${repo.stargazers_count}</span>
+      </li>
+    </ul>
+    <button class="repos-list__button" id="card-close-button" type="button" title="Remove from the list"></button>
+  `
+  listItem.querySelector('button').addEventListener('click', () => { listItem.remove() })
+  reposList.append(listItem)
+}

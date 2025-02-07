@@ -231,7 +231,6 @@ body {
 }
 
 .autocomplete-list {
-  min-height: 96px;
   background-color: #fff;
   border-radius: 6px;
   overflow: auto;
@@ -248,6 +247,7 @@ body {
   text-wrap: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  user-select: none;
 }
 .autocomplete-list__item:hover {
   background-color: #f2f3f4;
@@ -255,6 +255,12 @@ body {
   background-repeat: no-repeat;
   background-position: top 5px right 12px;
   background-size: 22px;
+}
+.autocomplete-list__repo-owner {
+  color: #babec2;
+}
+.autocomplete-list__repo-stars {
+  color: #babec2;
 }
 
 .repos-list {
