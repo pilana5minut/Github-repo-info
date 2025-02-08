@@ -12,29 +12,28 @@
   <div class="container">
     <main class="app">
 
-      <!-- <input id="query-button" type="button" value="caramba-repo"> -->
-      <input id="query-button" type="button" value="react">
+      <form class="search-form">
+        <input class="search-field" id="search-field" autocomplete="off" type="search"
+          placeholder="Введите название репозитория...">
 
-      <input class="search-field" id="search-field" autocomplete="off" type="text"
-        placeholder="Введите название репозитория...">
-
-      <ul class="autocomplete-list" id="autocomplete-list">
-        <!-- <li class="autocomplete-list__item">
-          <span class="autocomplete-list__repo-name">repo-name</span>
-          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
-          <span class="autocomplete-list__repo-stars">repo-stars</span>
-        </li>
-        <li class="autocomplete-list__item">
-          <span class="autocomplete-list__repo-name">repo-name</span>
-          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
-          <span class="autocomplete-list__repo-stars">repo-stars</span>
-        </li>
-        <li class="autocomplete-list__item">
-          <span class="autocomplete-list__repo-name">repo-name</span>
-          <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
-          <span class="autocomplete-list__repo-stars">repo-stars</span>
-        </li> -->
-      </ul>
+        <ul class="autocomplete-list" id="autocomplete-list">
+          <!-- <li class="autocomplete-list__item">
+            <span class="autocomplete-list__repo-name">repo-name</span>
+            <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+            <span class="autocomplete-list__repo-stars">repo-stars</span>
+          </li>
+          <li class="autocomplete-list__item">
+            <span class="autocomplete-list__repo-name">repo-name</span>
+            <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+            <span class="autocomplete-list__repo-stars">repo-stars</span>
+          </li>
+          <li class="autocomplete-list__item">
+            <span class="autocomplete-list__repo-name">repo-name</span>
+            <span class="autocomplete-list__repo-owner">-> repo-owner -></span>
+            <span class="autocomplete-list__repo-stars">repo-stars</span>
+          </li> -->
+        </ul>
+      </form>
 
       <ul class="repos-list" id="repos-list">
         <!-- <li class="repos-list__item">
@@ -56,11 +55,12 @@
           <button class="repos-list__button" id="card-close-button" type="button"
             title="Remove from the list"></button>
         </li> -->
+        <!-- //////////////////////////////////////////////////////// -->
       </ul>
 
     </main>
   </div>
-  <script src="main.js"></script>
+  <script src="scripts/main.js" type="module"></script>
 </body>
 
 </html>

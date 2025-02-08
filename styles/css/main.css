@@ -192,6 +192,7 @@ svg * {
   --background-color: #f6f8fa;
   --global-border-color: #d1d9e0;
   --scrollbar-thumb-color: #b5bcc2;
+  --green-accent: #1f883d;
 }
 
 body {
@@ -208,37 +209,37 @@ body {
   height: 100vh;
   margin: 0 auto;
   padding: 20px;
-  padding-right: 10px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb-color) transparent;
   border: 1px solid var(--global-border-color);
   border-radius: 6px;
   background-color: var(--background-color);
 }
 
-.search-field {
+.search-form .search-field {
   width: 100%;
   height: 32px;
   padding: 12px;
   border: 1px solid var(--global-border-color);
   border-radius: 6px;
+  position: relative;
+  outline-color: var(--green-accent);
 }
-.search-field::placeholder {
+.search-form .search-field::placeholder {
   color: #cad0d5;
 }
-
-.autocomplete-list {
-  background-color: #fff;
-  border-radius: 6px;
-  overflow: auto;
+.search-form .autocomplete-list {
+  max-height: 224px;
+  position: absolute;
+  z-index: 10;
+  overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  border-radius: 6px;
   box-shadow: 0px 7px 7px #aaaeb3;
+  background-color: #fff;
 }
-.autocomplete-list__item {
+.search-form .autocomplete-list__item {
   height: 32px;
   padding: 6px 14px;
   padding-right: 40px;
@@ -249,26 +250,28 @@ body {
   text-overflow: ellipsis;
   user-select: none;
 }
-.autocomplete-list__item:hover {
+.search-form .autocomplete-list__item:hover {
   background-color: #f2f3f4;
   background-image: url("../../assets/icons/plus.svg");
   background-repeat: no-repeat;
   background-position: top 5px right 12px;
   background-size: 22px;
 }
-.autocomplete-list__repo-owner {
+.search-form .autocomplete-list__repo-owner {
   color: #babec2;
 }
-.autocomplete-list__repo-stars {
+.search-form .autocomplete-list__repo-stars {
   color: #babec2;
 }
 
 .repos-list {
-  margin-top: auto;
-  padding-top: 20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
 }
 .repos-list__item {
   padding: 8px 12px;
@@ -279,12 +282,6 @@ body {
   border-radius: 6px;
   word-break: break-all;
 }
-.repos-list__item:hover .repos-list__button {
-  background-image: url("../../assets/icons/close.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 .repos-list__button {
   flex-basis: 28px;
   height: 28px;
@@ -292,6 +289,10 @@ body {
   align-self: center;
   border: none;
   background-color: transparent;
+  background-image: url("../../assets/icons/close.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .block-info-list__item {
