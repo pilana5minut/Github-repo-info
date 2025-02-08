@@ -36,13 +36,6 @@ searchField.addEventListener('input', (evt) => {
   debouncedQuery(evt.currentTarget.value)
 })
 
-async function repositoryQuery(repoName) {
-  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}`)
-  const data = await response.json()
-  console.log(data.items)
-  showAutocompleteList(data.items)
-}
-
 function showAutocompleteList(repositoryList) {
   repositoryList.forEach(repo => {
     const listItem = document.createElement('li')
