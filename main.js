@@ -1,18 +1,48 @@
 const BASE_URL = 'https://api.github.com'
+const searchField = document.getElementById('search-field')
 const queryButton = document.getElementById('query-button')
 const autocompleteList = document.getElementById('autocomplete-list')
 const reposList = document.getElementById('repos-list')
 
-queryButton.addEventListener('click', (evt) => {
-  repositoryQuery(evt.currentTarget.value)
-})
+///////////////////////////////////////////////////////////////////////////////
+
+const responseObject = {
+  headers: {
+    accept: "application/vnd.github+json",
+
+  }
+}
 
 async function repositoryQuery(repoName) {
-  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}`)
+  if (repoName.trim() === '') {
+    autocompleteList.innerHTML = ''
+    return
+  }
+  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}&per_page=9&sort=stars`, responseObject)
+  console.warn("Доступно запросов: ", response.headers.get('x-ratelimit-limit'))
+  console.warn("Осталось запросов: ", response.headers.get('x-ratelimit-remaining'))
+
   const data = await response.json()
   console.log(data.items)
+  autocompleteList.innerHTML = ''
   showAutocompleteList(data.items)
 }
+
+function debounce(delay, decorFn) {
+  let timer
+  return function wrapper(...args) {
+    clearTimeout(timer)
+    timer = setTimeout(() => { decorFn(...args) }, delay)
+  }
+}
+
+const debouncedQuery = debounce(333, repositoryQuery)
+
+searchField.addEventListener('input', (evt) => {
+  debouncedQuery(evt.currentTarget.value)
+})
+
+///////////////////////////////////////////////////////////////////////////////
 
 function showAutocompleteList(repositoryList) {
   repositoryList.forEach(repo => {
