@@ -1,24 +1,18 @@
 const BASE_URL = 'https://api.github.com'
 const searchField = document.getElementById('search-field')
-const queryButton = document.getElementById('query-button')
 const autocompleteList = document.getElementById('autocomplete-list')
 const reposList = document.getElementById('repos-list')
 
 ///////////////////////////////////////////////////////////////////////////////
-
-const responseObject = {
-  headers: {
-    accept: "application/vnd.github+json",
-
-  }
-}
 
 async function repositoryQuery(repoName) {
   if (repoName.trim() === '') {
     autocompleteList.innerHTML = ''
     return
   }
-  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}&per_page=9&sort=stars`, responseObject)
+  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}&per_page=9&sort=stars`, {
+    headers: { accept: "application/vnd.github+json", }
+  })
   console.warn("Доступно запросов: ", response.headers.get('x-ratelimit-limit'))
   console.warn("Осталось запросов: ", response.headers.get('x-ratelimit-remaining'))
 
@@ -42,8 +36,6 @@ searchField.addEventListener('input', (evt) => {
   debouncedQuery(evt.currentTarget.value)
 })
 
-///////////////////////////////////////////////////////////////////////////////
-
 function showAutocompleteList(repositoryList) {
   repositoryList.forEach(repo => {
     const listItem = document.createElement('li')
@@ -55,7 +47,12 @@ function showAutocompleteList(repositoryList) {
     `
     listItem.addEventListener('click', () => { addToRepositoriesList(repo) })
     autocompleteList.append(listItem)
+
   })
+
+  autocompleteList.style.cssText = `
+    width: ${searchField.offsetWidth}px;
+  `
 }
 
 function addToRepositoriesList(repo) {
@@ -79,6 +76,7 @@ function addToRepositoriesList(repo) {
     </ul>
     <button class="repos-list__button" id="card-close-button" type="button" title="Remove from the list"></button>
   `
-  listItem.querySelector('button').addEventListener('click', () => { listItem.remove() })
+
+  listItem.querySelector('#card-close-button').addEventListener('click', () => { listItem.remove() })
   reposList.append(listItem)
 }
