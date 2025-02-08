@@ -2,6 +2,7 @@ const BASE_URL = 'https://api.github.com'
 const searchField = document.getElementById('search-field')
 const autocompleteList = document.getElementById('autocomplete-list')
 const reposList = document.getElementById('repos-list')
+const repositoriesListIndex = new Map()
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -10,14 +11,13 @@ async function repositoryQuery(repoName) {
     autocompleteList.innerHTML = ''
     return
   }
-  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}&per_page=9&sort=stars`, {
+  const response = await fetch(`${BASE_URL}/search/repositories?q=${repoName}&per_page=10&sort=stars`, {
     headers: { accept: "application/vnd.github+json", }
   })
   console.warn("Доступно запросов: ", response.headers.get('x-ratelimit-limit'))
   console.warn("Осталось запросов: ", response.headers.get('x-ratelimit-remaining'))
 
   const data = await response.json()
-  console.log(data.items)
   autocompleteList.innerHTML = ''
   showAutocompleteList(data.items)
 }
@@ -35,6 +35,12 @@ const debouncedQuery = debounce(333, repositoryQuery)
 searchField.addEventListener('input', (evt) => {
   debouncedQuery(evt.currentTarget.value)
 })
+
+searchField.addEventListener('focus', (evt) => {
+  debouncedQuery(evt.currentTarget.value)
+})
+
+///////////////////////////////////////////////////////////////////////////////
 
 function showAutocompleteList(repositoryList) {
   repositoryList.forEach(repo => {
@@ -56,6 +62,11 @@ function showAutocompleteList(repositoryList) {
 }
 
 function addToRepositoriesList(repo) {
+  if (repositoriesListIndex.has(repo.id)) {
+    autocompleteList.innerHTML = ''
+    return
+  }
+
   const listItem = document.createElement('li')
   listItem.classList.add('repos-list__item')
   listItem.innerHTML = `
@@ -77,6 +88,12 @@ function addToRepositoriesList(repo) {
     <button class="repos-list__button" id="card-close-button" type="button" title="Remove from the list"></button>
   `
 
-  listItem.querySelector('#card-close-button').addEventListener('click', () => { listItem.remove() })
+  listItem.querySelector('#card-close-button').addEventListener('click', () => {
+    listItem.remove()
+    repositoriesListIndex.delete(repo.id)
+  })
+
   reposList.append(listItem)
+  autocompleteList.innerHTML = ''
+  repositoriesListIndex.set(repo.id, repo.name)
 }
