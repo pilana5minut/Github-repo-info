@@ -228,6 +228,14 @@ body {
 .search-form .search-field::placeholder {
   color: #cad0d5;
 }
+.search-form .request-limit-message {
+  display: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  user-select: none;
+  color: rgb(170, 0, 0);
+  background-color: rgba(255, 0, 0, 0.2);
+}
 .search-form .autocomplete-list {
   max-height: 160px;
   position: absolute;
@@ -263,9 +271,12 @@ body {
 .search-form .autocomplete-list__repo-stars {
   color: #babec2;
 }
+.search-form__repos-list {
+  margin-top: 20px;
+}
 
 .repos-list {
-  margin-top: 20px;
+  padding: 0 5px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
