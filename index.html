@@ -11,9 +11,13 @@
 <body>
   <div class="container">
     <main class="app">
+
       <form class="search-form">
-        <input class="search-field" id="search-field" autocomplete="off" type="search"
+        <input class="search-field " id="search-field" autocomplete="off" type="search"
           placeholder="Введите название репозитория...">
+
+        <p class="request-limit-message" id="request-limit-message">Лимит количества
+          запросов. Таймаут 1 минута. Подробности в консоли (F12)</p>
 
         <ul class="autocomplete-list" id="autocomplete-list">
           <!-- <li class="autocomplete-list__item">
@@ -34,7 +38,7 @@
         </ul>
       </form>
 
-      <ul class="repos-list" id="repos-list">
+      <ul class="repos-list search-form__repos-list" id="repos-list">
         <!-- <li class="repos-list__item">
           <ul class="repos-list__info block-info-list">
             <li class="block-info-list__item block-info-list__item--name" title="Repository name.">
